@@ -35,15 +35,12 @@ class Mandelbrot:
                 # Transforming the size of the box to fit the complex plane
                 cx = x * (self.xmax - self.xmin) / self.width + self.xmin
                 cy = y * (self.ymax - self.ymin) / self.width + self.ymin
-                xn = 0
-                yn = 0
-
-                while (xn**2 + yn**2) < 4 and i < self.max_iteration:
-                    tmp_x = xn
-                    tmp_y = yn
-                    xn = tmp_x**2 - tmp_y**2 + cx
-                    yn = 2 * tmp_x * tmp_y + cy
-                    i += 1
+                c = complex(cx, cy)
+                z = 0
+                
+                while abs(z) < 2 and i < self.max_iteration:
+                    z = z**2 + c
+                    i+=1
 
                 if i == self.max_iteration:
                     self.window.set_at((x, y), self.color)
