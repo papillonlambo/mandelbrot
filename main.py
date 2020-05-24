@@ -2,7 +2,13 @@ import pygame
 import math
 from mandelbrot import Mandelbrot
 
-PARAMS_ = {"color": (0, 0, 0), "backgroundColor": (0, 0, 255), "size": (600, 600), "coords": (-2, 0.5, -1.25, 1.25), "zoomfactor":2}
+PARAMS_ = {
+    "color": (0, 0, 0), 
+    "backgroundColor": (0, 0, 255), 
+    "size": (600, 600), 
+    "coords": (-2, 0.5, -1.25, 1.25), 
+    "zoomfactor": 2
+}
 
 # -----------------------------------------------------------
 
