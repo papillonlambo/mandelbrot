@@ -81,7 +81,8 @@ Complex numbers is real numbers extension but that introduces imaginary number.
 ![formula3](/assets/formula3.png)
 
 It's a number spelled a+ib.
-![complex_nomber](/assets/complex_numbers.png)
+
+<img src="/assets/complex_numbers.png" alt="complex_numbers" width="200" />
 
 a is Real part. (abscissa)
 
