@@ -32,9 +32,8 @@ class Mandelbrot:
                     progression += 1
                     print(f"Loading... {progression}%")
 
-                # Transforming the size of the box to fit the complex plane
-                cx = x * (self.xmax - self.xmin) / self.width + self.xmin
-                cy = y * (self.ymax - self.ymin) / self.width + self.ymin
+                cx = self.complex_transform(x, self.width, self.xmax, self.xmin)
+                cy = self.complex_transform(y, self.width, self.ymax, self.ymin)
                 c = complex(cx, cy)
                 z = 0
                 
