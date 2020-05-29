@@ -35,26 +35,10 @@ while isloop:
         elif event.type == pygame.MOUSEBUTTONDOWN:
 
             if event.button == 1:
+                mandelbrot.zoom(pygame.mouse.get_pos(), event.button)
 
-                # -----------------------
-                p = pygame.mouse.get_pos()
-                # Transforming pygame coordinates to complex plan values
-                mouseRealPart = mandelbrot.complex_transform(p[0], mandelbrot.width, mandelbrot.xmax, mandelbrot.xmin)
-                mouseImaginaryPart = mandelbrot.complex_transform(p[1], mandelbrot.height, mandelbrot.ymax, mandelbrot.ymin)
-                # Calculating the interpolation/zoom value
-                interpolation = 1.0 / mandelbrot.zoomfactor
-                # Redefining the values of the initial box drawing Moving the square of calculation around the mouse
-                # click coordinates with the interpolate method and "zooming"
-                mandelbrot.xmin = mandelbrot.interpolate(mouseRealPart, mandelbrot.xmin, interpolation)
-                mandelbrot.ymin = mandelbrot.interpolate(mouseImaginaryPart, mandelbrot.ymin, interpolation)
-                mandelbrot.xmax = mandelbrot.interpolate(mouseRealPart, mandelbrot.xmax, interpolation)
-                mandelbrot.ymax = mandelbrot.interpolate(mouseImaginaryPart, mandelbrot.ymax, interpolation)
-                # -----------------------
-
-                mandelbrot.draw()
-
-            elif event.button == 2:
-                p = pygame.mouse.get_pos()
-            
+            elif event.button == 3:
+                mandelbrot.zoom(pygame.mouse.get_pos(), event.button)
+                
 
         pygame.display.flip()

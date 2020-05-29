@@ -50,6 +50,30 @@ class Mandelbrot:
 
         print(f"Mandelbrot fractal successfully generated in {round(time.time() - time_, 2)}s")
 
+    
+    # --------------------------------------------------------------
+
+    def zoom(self, pos, zoomtype):
+
+        # Transforming pygame coordinates to complex plan values
+        mouseRealPart = self.complex_transform(pos[0], self.width, self.xmax, self.xmin)
+        mouseImaginaryPart = self.complex_transform(pos[1], self.height, self.ymax, self.ymin)
+        
+        # Calculating the interpolation/zoom value
+        if zoomtype == 1:
+            interpolation = 1.0 / self.zoomfactor
+        else:
+            interpolation = 1.0 * self.zoomfactor
+
+        # Redefining the values of the initial box drawing Moving the square of calculation around the mouse
+        # click coordinates with the interpolate method and "zooming"
+        self.xmin = self.interpolate(mouseRealPart, self.xmin, interpolation)
+        self.ymin = self.interpolate(mouseImaginaryPart, self.ymin, interpolation)
+        self.xmax = self.interpolate(mouseRealPart, self.xmax, interpolation)
+        self.ymax = self.interpolate(mouseImaginaryPart, self.ymax, interpolation)
+
+        self.draw()
+
 
     # ---------- Util functions -----------------------------------
 
