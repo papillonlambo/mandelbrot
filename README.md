@@ -61,6 +61,7 @@ PARAMS_ = {
 ### Zoom
 You can zoom with left click mouse and dezoom with right click mouse.
 ![example3](/assets/example3.png)
+![example4](/assets/example4.png)
 </div>
 
 ---------------------------------------------------
