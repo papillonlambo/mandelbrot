@@ -92,8 +92,6 @@ b is Imaginary part. (ordinate)
 
 **Vocabulary**
 
-Affix: Complex number that defines point in the complex plane. 
-
 Modulus: Distance between origin and complex point. 
 
 ![formula4](/assets/formula4.png)
