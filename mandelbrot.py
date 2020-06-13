@@ -36,8 +36,8 @@ class Mandelbrot:
                 cy = self.complex_transform(y, self.width, self.ymax, self.ymin)
                 c = complex(cx, cy)
                 z = 0
-                
-                while abs(z) < 2 and i < self.max_iteration:
+
+                while (z.imag**2 + z.real**2 < 4) and i < self.max_iteration:
                     z = z**2 + c
                     i+=1
 
@@ -55,22 +55,14 @@ class Mandelbrot:
 
     def zoom(self, pos, zoomtype):
 
-        # Transforming pygame coordinates to complex plan values
         mouseRealPart = self.complex_transform(pos[0], self.width, self.xmax, self.xmin)
         mouseImaginaryPart = self.complex_transform(pos[1], self.height, self.ymax, self.ymin)
-        
-        # Calculating the interpolation/zoom value
-        if zoomtype == 1:
-            interpolation = 1.0 / self.zoomfactor
-        else:
-            interpolation = 1.0 * self.zoomfactor
 
-        # Redefining the values of the initial box drawing Moving the square of calculation around the mouse
-        # click coordinates with the interpolate method and "zooming"
-        self.xmin = self.interpolate(mouseRealPart, self.xmin, interpolation)
-        self.ymin = self.interpolate(mouseImaginaryPart, self.ymin, interpolation)
-        self.xmax = self.interpolate(mouseRealPart, self.xmax, interpolation)
-        self.ymax = self.interpolate(mouseImaginaryPart, self.ymax, interpolation)
+        self.xmin = self.interpolate(mouseRealPart, self.xmin, self.set_interpolation(zoomtype))
+        self.xmax = self.interpolate(mouseRealPart, self.xmax, self.set_interpolation(zoomtype))
+
+        self.ymin = self.interpolate(mouseImaginaryPart, self.ymin, self.set_interpolation(zoomtype))
+        self.ymax = self.interpolate(mouseImaginaryPart, self.ymax, self.set_interpolation(zoomtype))
 
         self.draw()
 
@@ -83,4 +75,5 @@ class Mandelbrot:
     def interpolate(self, start, end, interpolation):
         return start + ((end - start) * interpolation)
 
-    # --------------------------------------------------------------
+    def set_interpolation(self, zoomtype):
+        return (1.0 / self.zoomfactor) if zoomtype == 1 else (1.0 * self.zoomfactor)

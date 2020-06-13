@@ -17,6 +17,7 @@ python main.py
 - [Example](#example)
 - [Zoom](#zoom)
 - [Theory](#theory)
+- [Util functions explanation](#util-explanation)
 
 ---------------------------------------------------
 
@@ -29,7 +30,7 @@ PARAMS_ = {
     "color": [FRACTAL_COLOR], 
     "backgroundColor": [BACKGROUND_COLOR], 
     "size": [WINDOW_SIZE], 
-    "coords": [FRACTAL_COORDONATES], 
+    "coords": [COORDINATES_COMPLEX_PLANE], 
     "zoomfactor": [ZOOM]
 }
 ```
@@ -107,5 +108,47 @@ We define  cordinated point affix noted c. Next we calculate sequence terms with
 While modulus of complex number is less than 2 and iteration (noted 'i') is less than MAX_ITERATION.
 
 If after loop while, 'i' is equal to MAX_ITERATION then the sequence converges so the coordonates is in set Mandelbrot and we can add black pixel. Else we add color pixel (we can vary color degrees using 'i' which different for each release of loop while)
+
+</div>
+
+---------------------------------------------------
+
+<div id="util-explanation">
+
+### Util functions explanation
+
+**complex_transform**
+
+> **Explanation**  
+The  initial coordonates ``(xmin: -2, xmax: 0.5,ymin: -1.25,ymax: 1.25)`` represents conceptually a ``rectangle``. Then this formula allows to adapt pixel coordinate (``grid_position``) in complex plan.  
+...
+```py
+def complex_transform(self, grid_position, size, max, min):
+    return grid_position / (size / (max - min)) + min
+```
+
+---
+
+**interpolate**
+
+> **Explanation**  
+...
+
+```py
+def interpolate(self, start, end, interpolation):
+    return start + ((end - start) * interpolation)
+```
+
+---
+
+**set_interpolation**
+
+> **Explanation**  
+This function allows to calculate the ratio according to the zoom level specified in ``_PARAMS`` in [main.py](https://github.com/mortim1/mandelbrot/blob/master/main.py#L5) file
+...
+```py
+def set_interpolation(self, zoomtype):
+    return (1.0 / self.zoomfactor) if zoomtype == 1 else (1.0 * self.zoomfactor)
+```
 
 </div>
