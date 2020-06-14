@@ -1,5 +1,4 @@
 import pygame
-import math
 from mandelbrot import Mandelbrot
 
 PARAMS_ = {
