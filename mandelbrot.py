@@ -1,6 +1,4 @@
 import pygame
-from math import *
-from cmath import *
 import time
 
 
@@ -70,7 +68,7 @@ class Mandelbrot:
     # ---------- Util functions -----------------------------------
 
     def complex_transform(self, grid_position, size, max, min):
-        return grid_position / (size / (max - min)) + min
+        return min + (grid_position * ((max - min) / size))
 
     def interpolate(self, start, end, interpolation):
         return start + ((end - start) * interpolation)
