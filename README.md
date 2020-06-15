@@ -63,9 +63,7 @@ PARAMS_ = {
 ```
 </div>
 
-**Example**
 ![example2](/assets/example2.png)
-
 
 ---
 
