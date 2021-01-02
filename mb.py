@@ -1,7 +1,6 @@
 import pygame
 import time
 
-
 class Mandelbrot:
 
     def __init__(self, window, color, backgroundColor, size, coords, zoomfactor):

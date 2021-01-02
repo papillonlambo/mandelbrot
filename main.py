@@ -1,5 +1,5 @@
 import pygame
-from mandelbrot import Mandelbrot
+from mb import Mandelbrot
 
 PARAMS_ = {
     "color": (0, 0, 0), 
