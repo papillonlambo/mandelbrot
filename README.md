@@ -1,4 +1,4 @@
-# mandelbrot
+# mb
 
 Mandelbrot fractal's visualizer with pygame library. 
 
