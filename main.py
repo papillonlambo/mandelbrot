@@ -33,11 +33,7 @@ while isloop:
             isloop = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
 
-            if event.button == 1:
+            if event.button in [1, 3]:
                 mandelbrot.zoom(pygame.mouse.get_pos(), event.button)
-
-            elif event.button == 3:
-                mandelbrot.zoom(pygame.mouse.get_pos(), event.button)
-                
 
         pygame.display.flip()
